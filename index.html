@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <script src="tttjs.js"></script>
+    <title>Tic Tac Toe</title>
+</head>
+<style>
+    * {
+        color: white;
+    }
+
+    .nav {
+        text-align: center;
+
+    }
+
+    .nav h1 {
+        font-size: 4em;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+    .game {
+
+        height: 84vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .p {
+        height: 100%;
+
+        margin: 1px 2px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .p1 {
+        width: 25%;
+    }
+
+    .p2 {
+        width: 25%;
+    }
+
+    .board {
+        height: 100%;
+
+        margin: 1px 5px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        opacity: 0.2;
+    }
+
+    .rw {
+        height: 32%;
+        width: 99%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        margin: 0px;
+        width: 32%;
+        height: 99%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .boxu {
+        border-top: 1.5px solid white;
+    }
+
+    .boxd {
+        border-bottom: 1.5px solid white;
+    }
+
+    .boxl {
+        border-left: 1.5px solid white;
+    }
+
+    .boxr {
+        border-right: 1.5px solid white;
+    }
+
+    .avtar {
+
+        width: 100%;
+        height: 75%;
+        margin: 1px;
+    }
+
+    .pname {
+        width: 100%;
+        height: 24%;
+        margin: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pname p {
+        font-size: 40px;
+    }
+
+    .avtar img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .box p {
+        font-size: 10em;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .xo {
+        display: none;
+    }
+
+    #winx {
+        position: relative;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        top: -600px;
+        width: 49%;
+        height: 38rem;
+        margin: auto;
+        background: linear-gradient(-45deg, #000000d8, #5f6463);
+
+    } 
+    #winy {
+        position: relative;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        top: -600px;
+        width: 49%;
+        height: 38rem;
+        margin: auto;
+        background: linear-gradient(-45deg, #000000d8, #5f6463);
+    } 
+
+    @keyframes blinks {
+        to {
+            visibility: hidden;
+        }
+    }
+    .box:hover{
+        background-color: rgba(156, 156, 212, 0.692);
+    }
+
+    .game{
+        z-index: 5;
+    }
+    .bgc{
+        background: linear-gradient(-45deg, #23A6D5, #23D5AB);
+    }
+
+</style>
+
+<body class="bgc">
+        <div class="nav">
+            <h1>Tic Tac Toe</h1>
+        </div>
+    <hr>
+        <div class="game">
+            <div class="p1 p">
+                <div class="avtar">
+                    <img src="av1.png" alt="">
+                </div>
+                <div class="pname">
+                    <p>Player 1</p>
+                </div>
+            </div>
+            <div class="board">
+                <div class="rw">
+                    <div class="box boxd boxr" onclick="show(1)">
+                        <p id="x1" class="xo">X</p>
+                        <p id="o1" class="xo">O</p>
+                    </div>
+                    <div class="box boxd boxl boxr" onclick="show(2)">
+                        <p id="x2" class="xo">X</p>
+                        <p id="o2" class="xo">O</p>
+                    </div>
+                    <div class="box boxd boxl" onclick="show(3)">
+                        <p id="x3" class="xo">X</p>
+                        <p id="o3" class="xo">O</p>
+                    </div>
+                </div>
+                <div class="rw">
+                    <div class="box boxu boxd boxr" onclick="show(4)">
+                        <p id="x4" class="xo">X</p>
+                        <p id="o4" class="xo">O</p>
+                    </div>
+                    <div class="box boxu boxd boxl boxr" onclick="show(5)">
+                        <p id="x5" class="xo">X</p>
+                        <p id="o5" class="xo">O</p>
+                    </div>
+                    <div class="box boxu boxd boxl" onclick="show(6)">
+                        <p id="x6" class="xo">X</p>
+                        <p id="o6" class="xo">O</p>
+                    </div>
+                </div>
+                <div class="rw">
+                    <div class="box boxu boxr" onclick="show(7)">
+                        <p id="x7" class="xo">X</p>
+                        <p id="o7" class="xo">O</p>
+                    </div>
+                    <div class="box boxu boxl boxr" onclick="show(8)">
+                        <p id="x8" class="xo">X</p>
+                        <p id="o8" class="xo">O</p>
+                    </div>
+                    <div class="box boxu boxl" onclick="show(9)">
+                        <p id="x9" class="xo">X</p>
+                        <p id="o9" class="xo">O</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p2 p">
+                <div class="avtar">
+                    <img src="av2.png" alt="">
+                </div>
+                <div class="pname">
+                    <p>Player 2</p>
+                </div>
+            </div>
+        </div>
+        <div id="winx">
+            <h1>Player 1 Won!</h1>
+        </div>
+        <div id="winx">
+            <h1>Player 2 Won!</h1>
+        </div>
+</body>
+</body>
+</html>
